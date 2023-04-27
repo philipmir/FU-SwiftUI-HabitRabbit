@@ -6,21 +6,75 @@
 //
 
 import SwiftUI
+import Firebase
 
-struct ContentView: View {
+struct ContentView : View {
+    
+    
+//    @EnvironmentObject var journal : HabitViewModel
+    
+    @State var signedIn = false
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        
+        HabitRabbitView()
+        
+
+        
+        if !signedIn {
+            SignInView(signedIn: $signedIn)
+        } else {
+            CheckHabitView()
         }
-        .padding()
+        
     }
 }
+
+struct SignInView : View {
+    @Binding var signedIn : Bool
+    var auth = Auth.auth()
+    
+    var body: some View {
+        Button(action: {
+            auth.signInAnonymously { result, error in
+                if let error = error {
+                    print("error signing in")
+                } else {
+                    signedIn = true
+                }
+            
+            }
+            
+        }) {
+            Text ("Sign in")
+        }
+    }
+}
+
+struct HabitRabbitView: View {
+    var body: some View {
+        ZStack {
+            Color(red: 255/255, green: 230/255, blue: 230/255)
+                .edgesIgnoringSafeArea(.all)
+            VStack {
+                Image(systemName: "hare.fill")
+                    .resizable()
+                    .frame(width: 100, height: 100)
+                    .foregroundColor(.white)
+                    .padding()
+                Text("Habit Rabbit")
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
+                    .foregroundColor(.white)
+            }
+        }
+    }
+}
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+        
     }
 }

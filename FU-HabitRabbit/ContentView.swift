@@ -17,7 +17,7 @@ struct ContentView : View {
     
     var body: some View {
         
-        HabitRabbitView()
+//        HabitRabbitView()
         
 
         
@@ -35,18 +35,39 @@ struct SignInView : View {
     var auth = Auth.auth()
     
     var body: some View {
-        Button(action: {
-            auth.signInAnonymously { result, error in
-                if let error = error {
-                    print("error signing in")
-                } else {
-                    signedIn = true
+        ZStack {
+            Color(red: 255/255, green: 230/255, blue: 230/255)
+                .edgesIgnoringSafeArea(.all)
+            VStack {
+                Image(systemName: "hare.fill")
+                    .resizable()
+                    .frame(width: 100, height: 100)
+                    .foregroundColor(.white)
+                    .padding()
+                Text("Habit Rabbit")
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
+                    .foregroundColor(.white)
+                
+                Button(action: {
+                    auth.signInAnonymously { result, error in
+                        if let error = error {
+                            print("error signing in")
+                        } else {
+                            signedIn = true
+                        }
+                    }
+                }) {
+                    Text("Sign in")
+                        .foregroundColor(.white)
+                        .padding(.vertical, 10)
+                        .padding(.horizontal, 20)
+                        .font(.headline)
                 }
-            
+                .background(Color.pink)
+                .cornerRadius(10)
+                .padding(.top, 50)
             }
-            
-        }) {
-            Text ("Sign in")
         }
     }
 }

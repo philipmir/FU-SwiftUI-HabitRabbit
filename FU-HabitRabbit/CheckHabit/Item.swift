@@ -23,7 +23,7 @@ import FirebaseFirestoreSwift
 //}
 
 
-struct Item: Codable, Identifiable {
+struct Habit: Codable, Identifiable {
     @DocumentID var id: String?
     var name: String
     var done: Bool

@@ -13,42 +13,31 @@ class CheckHabitVM : ObservableObject {
     let db = Firestore.firestore()
     let auth = Auth.auth()
     
-    @Published var items = [Item]()
+    @Published var habit = [Habit]()
     
     func delete(index : Int) {
         guard let user = auth.currentUser else {return}
-        let itemsRef = db.collection("users").document(user.uid).collection("items")
+        let habitRef = db.collection("users").document(user.uid).collection("habit")
         
-        let item = items[index]
+        let item = habit[index]
         if let id = item.id {
-            itemsRef.document(id).delete()
+            habitRef.document(id).delete()
         }
         
     }
     
+
     
-//    func toggle(item: Item) {
-//
-//        guard let user = auth.currentUser else {return}
-//        let itemsRef = db.collection("users").document(user.uid).collection("items")
-//
-//
-//        if let id = item.id {
-//            itemsRef.document(id).updateData(["done" : !item.done])
-//        }
-//
-//    }
-    
-    func toggle(item: Item) {
+    func toggle(habit: Habit) {
         guard let user = auth.currentUser else {return}
-        let itemsRef = db.collection("users").document(user.uid).collection("items")
+        let habitRef = db.collection("users").document(user.uid).collection("habit")
 
-        var updatedItem = item
-        updatedItem.toggle()
+        var updatedHabit = habit
+        updatedHabit.toggle()
 
-        if let id = updatedItem.id {
+        if let id = updatedHabit.id {
             do {
-                try itemsRef.document(id).setData(from: updatedItem)
+                try habitRef.document(id).setData(from: updatedHabit)
             } catch let error {
                 print("Error updating item: \(error)")
             }
@@ -61,14 +50,14 @@ class CheckHabitVM : ObservableObject {
     
     func saveToFirestore(itemName : String) {
         guard let user = auth.currentUser else {return}
-        let itemsRef = db.collection("users").document(user.uid).collection("items")
+        let habitRef = db.collection("users").document(user.uid).collection("habit")
         
         
         
-        let item = Item(name: itemName, done: false)
+        let habit = Habit(name: itemName, done: false)
         
         do {
-            try itemsRef.addDocument(from: item)
+            try habitRef.addDocument(from: habit)
         } catch {
             print("Error saving to db")
         }
@@ -76,9 +65,9 @@ class CheckHabitVM : ObservableObject {
     
     func listenToFirestore() {
         guard let user = auth.currentUser else {return}
-        let itemsRef = db.collection("users").document(user.uid).collection("items")
+        let habitRef = db.collection("users").document(user.uid).collection("habit")
         
-        itemsRef.addSnapshotListener() {
+        habitRef.addSnapshotListener() {
             snapshot, err in
             
             guard let snapshot = snapshot else {return}
@@ -86,12 +75,12 @@ class CheckHabitVM : ObservableObject {
             if let err = err {
                 print("error getting document) \(err)")
             } else {
-                self.items.removeAll()
+                self.habit.removeAll()
                 for document in snapshot.documents {
                     
                     do {
-                        let item = try document.data(as: Item.self)
-                        self.items.append(item)
+                        let habit = try document.data(as: Habit.self)
+                        self.habit.append(habit)
                     } catch {
                         print("Error reading from db")
                     }

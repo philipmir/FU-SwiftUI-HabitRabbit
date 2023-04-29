@@ -38,6 +38,10 @@ struct CheckHabitView: View {
                     showingAddAlert = true
                 }) {
                     Text("Add")
+                        .foregroundColor(.white)
+                        .padding()
+                        .background(Color.pink)
+                        .cornerRadius(10)
                 }
                 .padding(.top, 16)
                 
@@ -55,7 +59,6 @@ struct CheckHabitView: View {
         .onAppear() {
             checkHabitVM.listenToFirestore()
         }
-        
     }
 }
 

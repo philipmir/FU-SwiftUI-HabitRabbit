@@ -19,6 +19,7 @@ struct CheckHabitView: View {
     @State var showingAddAlert = false
     @State var newItemName = ""
     
+    
     var body: some View {
         NavigationView {
             VStack {
@@ -58,11 +59,11 @@ struct CheckHabitView: View {
         }
         .onAppear() {
             checkHabitVM.listenToFirestore()
+            
         }
     }
 }
 
-    
 
 struct RowView2: View {
     let habit: Habit
@@ -94,6 +95,21 @@ struct RowView2: View {
     }
 }
 
+func testStreak() {
+    var habit = Habit(name: "Exercise", done: false, lastDoneDate: nil)
+    print("Initial streak: \(habit.streak)") // 0
+    
+    // Mark the habit as done today
+    habit.toggle()
+    print("Streak after marking as done: \(habit.streak)") // 1
+    print("Last done date: \(habit.lastDoneDate!)") // Current date
+    
+    // Mark the habit as done again tomorrow
+    habit.lastDoneDate = Calendar.current.date(byAdding: .day, value: -1, to: Date())
+    habit.toggle()
+    print("Streak after marking as done again: \(habit.streak)") // 2
+}
+
 
 
 
@@ -103,4 +119,5 @@ struct CheckHabitView_Previews: PreviewProvider {
         CheckHabitView()
     }
 }
+
 

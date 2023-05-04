@@ -30,6 +30,8 @@ struct Habit: Codable, Identifiable {
     var lastDoneDate: Date?
     var streak: Int = 0
     
+    
+    
     mutating func toggle() {
         done = !done
         if done {
@@ -47,3 +49,5 @@ struct Habit: Codable, Identifiable {
         }
     }
 }
+
+

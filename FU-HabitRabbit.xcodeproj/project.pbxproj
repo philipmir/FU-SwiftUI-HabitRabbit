@@ -18,10 +18,6 @@
 		3369BBF029F57A130002D5B7 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 3369BBEF29F57A130002D5B7 /* FirebaseFirestore */; };
 		3369BBF229F57A130002D5B7 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 3369BBF129F57A130002D5B7 /* FirebaseFirestoreSwift */; };
 		3369BBFC29F57DFA0002D5B7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3369BBFB29F57DFA0002D5B7 /* GoogleService-Info.plist */; };
-		3369BBFF29F58B850002D5B7 /* HabitEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3369BBFE29F58B850002D5B7 /* HabitEntry.swift */; };
-		3369BC0129F58BBA0002D5B7 /* HabitEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3369BC0029F58BBA0002D5B7 /* HabitEntryView.swift */; };
-		3369BC0329F58BE30002D5B7 /* HabitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3369BC0229F58BE30002D5B7 /* HabitViewModel.swift */; };
-		3369BC0529F590080002D5B7 /* Habit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3369BC0429F590080002D5B7 /* Habit.swift */; };
 		3369BC0729F7E99C0002D5B7 /* CheckHabitVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3369BC0629F7E99C0002D5B7 /* CheckHabitVM.swift */; };
 		3369BC0929F7EBC30002D5B7 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3369BC0829F7EBC30002D5B7 /* Item.swift */; };
 		3369BC0B29F7EEE90002D5B7 /* CheckHabitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3369BC0A29F7EEE90002D5B7 /* CheckHabitView.swift */; };
@@ -56,10 +52,6 @@
 		3369BBDB29F5789A0002D5B7 /* FU_HabitRabbitUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FU_HabitRabbitUITests.swift; sourceTree = "<group>"; };
 		3369BBDD29F5789A0002D5B7 /* FU_HabitRabbitUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FU_HabitRabbitUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		3369BBFB29F57DFA0002D5B7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		3369BBFE29F58B850002D5B7 /* HabitEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitEntry.swift; sourceTree = "<group>"; };
-		3369BC0029F58BBA0002D5B7 /* HabitEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitEntryView.swift; sourceTree = "<group>"; };
-		3369BC0229F58BE30002D5B7 /* HabitViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitViewModel.swift; sourceTree = "<group>"; };
-		3369BC0429F590080002D5B7 /* Habit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Habit.swift; sourceTree = "<group>"; };
 		3369BC0629F7E99C0002D5B7 /* CheckHabitVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckHabitVM.swift; sourceTree = "<group>"; };
 		3369BC0829F7EBC30002D5B7 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		3369BC0A29F7EEE90002D5B7 /* CheckHabitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckHabitView.swift; sourceTree = "<group>"; };
@@ -119,7 +111,6 @@
 				3369BBFB29F57DFA0002D5B7 /* GoogleService-Info.plist */,
 				3369BBC029F578980002D5B7 /* FU_HabitRabbitApp.swift */,
 				3369BBC229F578980002D5B7 /* ContentView.swift */,
-				3369BBFD29F58B520002D5B7 /* Habit */,
 				3369BC0C29F7EF0D0002D5B7 /* CheckHabit */,
 				3369BBC629F5789A0002D5B7 /* Preview Content */,
 			);
@@ -150,17 +141,6 @@
 				3369BBDD29F5789A0002D5B7 /* FU_HabitRabbitUITestsLaunchTests.swift */,
 			);
 			path = "FU-HabitRabbitUITests";
-			sourceTree = "<group>";
-		};
-		3369BBFD29F58B520002D5B7 /* Habit */ = {
-			isa = PBXGroup;
-			children = (
-				3369BC0429F590080002D5B7 /* Habit.swift */,
-				3369BBFE29F58B850002D5B7 /* HabitEntry.swift */,
-				3369BC0029F58BBA0002D5B7 /* HabitEntryView.swift */,
-				3369BC0229F58BE30002D5B7 /* HabitViewModel.swift */,
-			);
-			path = Habit;
 			sourceTree = "<group>";
 		};
 		3369BC0C29F7EF0D0002D5B7 /* CheckHabit */ = {
@@ -314,13 +294,9 @@
 			files = (
 				3369BC0729F7E99C0002D5B7 /* CheckHabitVM.swift in Sources */,
 				3369BC0B29F7EEE90002D5B7 /* CheckHabitView.swift in Sources */,
-				3369BC0529F590080002D5B7 /* Habit.swift in Sources */,
-				3369BC0129F58BBA0002D5B7 /* HabitEntryView.swift in Sources */,
 				3369BBC329F578980002D5B7 /* ContentView.swift in Sources */,
 				3369BC0929F7EBC30002D5B7 /* Item.swift in Sources */,
-				3369BC0329F58BE30002D5B7 /* HabitViewModel.swift in Sources */,
 				3369BBC129F578980002D5B7 /* FU_HabitRabbitApp.swift in Sources */,
-				3369BBFF29F58B850002D5B7 /* HabitEntry.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
